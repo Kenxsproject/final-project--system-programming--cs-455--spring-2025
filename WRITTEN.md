@@ -4,26 +4,25 @@
 
 ### 1. Describe what happens to memory released by the OS with regard to virtual memory
 
-REPLACE THIS CONTENT WITH YOUR ANSWER
+When memory is released by a process, the operating system makes a note that the virtual memory region is free, which will make it available for future allocations.
 
 ---
 
 ### 2. In a C program, why does `argv[argc]` return `NULL`?
 
-REPLACE THIS CONTENT WITH YOUR ANSWER
+In C, argv[argc] is guaranteed to be NULL by the language specification.
 
 ---
 
 ### 3. When a system call is made the CPU changes from user mode to kernel mode. Why?
 
-REPLACE THIS CONTENT WITH YOUR ANSWER
+The CPU switches from user mode to kernel mode during a system call to ensure the operating system can safely and securely access hardware resources or manage important functions like file I/O, memory, or process control. 
 
 ---
 
 ### 4. Explain the relationship between the return value of a system call and the global variable `errno`
 
-REPLACE THIS CONTENT WITH YOUR ANSWER
-
+System calls return a value that either say success or failure. On success, the return value is  non-negative. On failure, the return value is  -1, and the global variable errno is set to reference the specific error code. 
 ---
 
 ### 5. Consider the following C program. The variables and functions get allocated to which memory segments? Write your answers in comments to the right of each item
@@ -49,10 +48,10 @@ int square(int x) {
 }
 
 int main (int argc, char *argv[]) {
-  char *dynamic_memory;
-  dynamic_memory = malloc(MAX);
-  free(dynamic_memory);
-  dynamic_memory = NULL;
+  char *dynamic_memory;// local pointer variable
+  dynamic_memory = malloc(MAX);//memory allocated dynamically
+  free(dynamic_memory);//memory is freed
+  dynamic_memory = NULL;//pointer still local to stack
 
   return 0;
 }
@@ -62,7 +61,7 @@ int main (int argc, char *argv[]) {
 
 ### 6. Explain the difference between `malloc`, `calloc`, `realloc`
 
-REPLACE THIS CONTENT WITH YOUR ANSWER
+The difference between malloc, calloc, and realloc is how they allocate and manage memory. malloc allocates a single block of memory of a specified size but does not initialize the contents, meaning it may contain garbage values. In contrast, calloc not only allocates memory but also initializes all bytes to zero.realloc is used to resize an existing memory block that was previously allocated with malloc or calloc. It preserves the original content up to the minimum of the old and new sizes and may move the memory block to a new location if necessary.
 
 ---
 
